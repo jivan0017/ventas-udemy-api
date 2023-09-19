@@ -16,16 +16,16 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    // return this.userService.create(createUserDto);
-    return {
-      ...createUserDto,
-      password: undefined,
-    };
+  async create(@Body() createUserDto: CreateUserDto): Promise<CreateUserDto> {
+    return this.userService.create(createUserDto);
+    // return {
+    //   ...createUserDto,
+    //   password: undefined,
+    // };
   }
 
   @Get()
-  findAll() {
+  async findAll(): Promise<CreateUserDto[]> {
     return this.userService.findAll();
   }
 
