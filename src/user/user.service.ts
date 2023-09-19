@@ -11,7 +11,7 @@ export class UserService {
     const salt = 10;
     const passwordHash = await hash(createUserDto.password, salt);
     console.log('>>> pass', passwordHash);
-    // createUserDto.password = passwordHash;
+    createUserDto.password = passwordHash;
     this.users.push(createUserDto);
     console.log('cantidad >>> ', this.users.length);
     return createUserDto;
