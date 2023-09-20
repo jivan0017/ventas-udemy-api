@@ -26,3 +26,22 @@ npm install --save @nestjs/typeorm typeorm mysql2
 # Crear proyecto en directorio - carpeta actual
 - Crear proyecto nest en el directorio actual:
 nest new .
+
+
+# Crear interface dentro de carpeta
+- comando:
+nest g interface user/interfaces/user
+
+# Instalar packages:
+
+- config
+npm i --save @nestjs/config
+
+# Crear carpeta raíz constantes:
+config
+    constants
+        cors
+
+# instalar package:
+npm i --save cross-env        
+
