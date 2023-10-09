@@ -19,8 +19,8 @@ async function bootstrap() {
     // NOTE: Agrega el prefijo /api/
     // app.setGlobalPrefix('api');
     
-    console.log("ConfigService: >>>> from main.ts", configService.get('APP_PORT'));    
+    console.log("ConfigService: >>>> from main.ts", configService.get('APP_PORT'));
 
-    await app.listen(3000);
+    await app.listen(configService.get('APP_PORT'));
 }
 bootstrap();

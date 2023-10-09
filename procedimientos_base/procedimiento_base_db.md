@@ -27,7 +27,11 @@ services:
       - 5432:5432
 
 
-- Ejecutar el comando:
+- Ejecutar el comando para subir la imagen:
 docker-compose up
 
+- Ejecutar el comando para bajar la imagen:
+docker-compose stop
 
+
+--------------------------------------------------------------------------------

@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSourceConfig } from './config/constants/datasources/data.source';
 
 @Module({
   imports: [
@@ -9,6 +11,11 @@ import { ConfigModule } from '@nestjs/config';
       envFilePath: `.${process.env.PROJECT_ENVIROMENT}.env`,
       isGlobal: true,
     }),
+
+    // INFO: Database
+    TypeOrmModule.forRoot(
+        DataSourceConfig
+    ),    
   ],
   controllers: [],
   providers: [],

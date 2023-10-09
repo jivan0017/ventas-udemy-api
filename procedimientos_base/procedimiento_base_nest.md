@@ -32,16 +32,19 @@ nest new .
 - comando:
 nest g interface user/interfaces/user
 
-# Instalar packages:
-
-- config
-npm i --save @nestjs/config
 
 # Crear carpeta raíz constantes:
 config
     constants
         cors
 
-# instalar package:
-npm i --save cross-env        
 
+# Configurar migraciones en el archivo: pachage.json
+
+agregar los siguients scripts en el tag: scripts:
+
+    "migration:generate": "npm run typeorm --migration:run",
+    "migration:revert": "npm run typeorm --migration:revert",
+    "orm:init": "typeorm-ts-node-esm -d ./src/config/datasources/data.source.ts",
+    "m:gen": "cross-env PROJECT_ENVIROMENT=develop npm run orm:init migration:generate",
+    "m:run": "cross-env PROJECT_ENVIROMENT=develop npm run orm:init migration:run"

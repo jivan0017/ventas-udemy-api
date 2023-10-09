@@ -1,6 +1,6 @@
-import { User } from '../interfaces/user/user.interface';
+import { IUser } from '../interfaces/user/user.interface';
 
-export class CreateUserDto implements User {
+export class CreateUserDto implements IUser {
   id: number;
   name: string;
   email: string;
