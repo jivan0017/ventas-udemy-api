@@ -9,9 +9,10 @@ export class EnviromentConfig {
   static readonly ENTITIES_DIRNAME_THREE_LEVELS = `/../../../**/*.entity{.ts,.js}`;
   static readonly ENTITIES_DIRNAME_DIST = `dist/**/*.entity{.ts,.js}`;
 
-  static readonly MIGRATIONS_DIRNAME = `/migrations/*{.ts,*.js}`;
-  static readonly MIGRATIONS_DIRNAME_ABSOLUTE_PATH = `src/migrations/**/*{.ts,.js}`;
-  static readonly MIGRATIONS_DIRNAME_DIST = `dist/db/migrations/*{.ts,.js}`;
+  static readonly MIGRATIONS_DIRNAME = `/migration/*{.ts,*.js}`;
+  static readonly MIGRATIONS_DIRNAME_ABSOLUTE_PATH = `/migration/{.ts,*.js}`;
+  static readonly MIGRATIONS_DIRNAME_ABSOLUTE_PATH_V2 = `/src/migration/{.ts,*.js}`;
+  static readonly MIGRATIONS_DIRNAME_DIST = `dist/db/migration/*{.ts,.js}`;
 
   static readonly MIGRATIONS_TABLE_NAME = 'migrations'; 
 

@@ -34,4 +34,17 @@ docker-compose up
 docker-compose stop
 
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+# MIGRACIONES
+- crear manualmente migración a partir del comando:
+npx typeorm migration:create ./src/migration/create_table_user
+npx typeorm migration:create ./src/migration/create_table_state
+npx typeorm migration:create ./src/migration/create_table_city
+npx typeorm migration:create ./src/migration/create_table_address
+
+- Alter tables:
+npx typeorm migration:create ./src/migration/alter-table-state
+npx typeorm migration:create ./src/migration/insert-in-state
+npx typeorm migration:create ./src/migration/insert-in-city
+npx typeorm migration:create ./src/migration/alter-table-city

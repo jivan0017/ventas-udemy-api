@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { IUser } from "../interfaces/user/user.interface";
 
-@Entity({ name: 'users' })
+@Entity({ name: 'user' })
 export class UserEntity implements IUser {
     @PrimaryGeneratedColumn()
     id: number;
@@ -20,6 +20,12 @@ export class UserEntity implements IUser {
     })
     email: string;
 
+    @Column({        
+        name: 'cpf',
+        default: 'CPF'
+    })
+    cpf: string;    
+
     @Column({
         name: 'phone',
         unique: false,
@@ -34,22 +40,27 @@ export class UserEntity implements IUser {
     password: string;
 
     @Column({
+        name: 'type_user',
+    })
+    typeUser: number;    
+
+    @Column({
         default: true,
         name: 'status'
     })
     status: boolean;
 
-    @Column({
+    @CreateDateColumn({
         type: 'timestamp',
         default: () => 'NOW()',
         name: 'created_at'
     })
     createdAt: Date;
 
-    // @Column({
-    //     type: 'datetime',
-    //     default: () => 'CURRENT_TIMESTAMP',
-    //     name: 'updated_at'
-    // })
-    // updatedAt: Date;
+    @UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'NOW()',
+        name: 'updated_at'
+    })
+    updatedAt: Date;
 }

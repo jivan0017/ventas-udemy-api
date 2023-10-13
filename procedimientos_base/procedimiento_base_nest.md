@@ -48,3 +48,16 @@ agregar los siguients scripts en el tag: scripts:
     "orm:init": "typeorm-ts-node-esm -d ./src/config/datasources/data.source.ts",
     "m:gen": "cross-env PROJECT_ENVIROMENT=develop npm run orm:init migration:generate",
     "m:run": "cross-env PROJECT_ENVIROMENT=develop npm run orm:init migration:run"
+
+
+# Generar recursos complementarios (state, city, address):
+- comando:
+nest generate resource state --no-spec
+nest generate resource city --no-spec
+nest generate resource address --no-spec
+
+
+# Instalar cache manager:
+- comando:
+npm install @nestjs/cache-manager cache-manager
+npm install cache-manager

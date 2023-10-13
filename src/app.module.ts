@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSourceConfig } from './config/constants/datasources/data.source';
+import { DataSourceConfig } from './config/datasources/data.source';
+import { StateModule } from './state/state.module';
+import { CityModule } from './city/city.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
@@ -14,8 +17,14 @@ import { DataSourceConfig } from './config/constants/datasources/data.source';
 
     // INFO: Database
     TypeOrmModule.forRoot(
-        DataSourceConfig
-    ),    
+        DataSourceConfig,
+    ),
+
+    StateModule,
+
+    CityModule,
+
+    AddressModule,    
   ],
   controllers: [],
   providers: [],

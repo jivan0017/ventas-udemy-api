@@ -1,5 +1,5 @@
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { EnviromentConfig } from "../../constants/enviroment.config";
+import { EnviromentConfig } from "../constants/enviroment.config";
 import { DataSource, DataSourceOptions } from "typeorm";
 
 
@@ -18,11 +18,16 @@ export const DataSourceConfig: DataSourceOptions = {
     username: configService.get('DB_USER'),
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
-    entities: [`${__dirname}${EnviromentConfig.ENTITIES_DIRNAME_THREE_LEVELS}`],
-    migrations: [EnviromentConfig.MIGRATIONS_DIRNAME_ABSOLUTE_PATH],
+    // entities: [`${__dirname}${EnviromentConfig.ENTITIES_DIRNAME_THREE_LEVELS}`],
+    // entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+    entities: [`dist/**/*.entity{.js,.ts}`],
     migrationsTableName: EnviromentConfig.MIGRATIONS_TABLE_NAME,
-    migrationsRun: EnviromentConfig.MIGRATIONS_RUN_FALSE,
-    synchronize: EnviromentConfig.SINCRONIZED_DATABASE_TRUE,
-}
+    // migrations: [`${__dirname}/migration/{.ts,*.js}`],
+    //migrations: [`src/migration/**/*{.ts,.js}`], //<-- ok para migraciones manuales
+    migrations: [`dist/migration/**/*{.ts,.js}`], //<-- ok para migraciones manuales
+    // migrations: [`${__dirname}/migration/{.ts,*.js}`],
+    migrationsRun: true,
+    synchronize: EnviromentConfig.SINCRONIZED_DATABASE_FALSE,
+} 
 
 export const AppDS = new DataSource(DataSourceConfig)
