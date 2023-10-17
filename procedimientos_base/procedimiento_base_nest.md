@@ -61,3 +61,12 @@ nest generate resource address --no-spec
 - comando:
 npm install @nestjs/cache-manager cache-manager
 npm install cache-manager
+
+# Creación de módulo para cache
+- comando
+nest g module cache
+nest g service cache
+
+# Instalación de class validator y class transform
+- comandos:
+npm i --save class-validator class-transformer

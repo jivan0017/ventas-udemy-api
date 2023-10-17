@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateCityDto } from './dto/create-city.dto';
 import { UpdateCityDto } from './dto/update-city.dto';
 import { CityEntity } from './entities/city.entity';
@@ -51,6 +51,20 @@ export class CityService {
 
         // return cities;
     }
+
+    async getCityById(cityId: number): Promise<CityEntity> {
+        const city = await this.cityRepository.findOne({
+            where: {
+                id: cityId
+            }
+        });
+
+        if (!city) {
+            throw new NotFoundException(`cityId ${cityId} Not Found`);
+        }
+
+        return city;
+    }    
 
     findOne(id: number) {
         return `This action returns a #${id} city`;

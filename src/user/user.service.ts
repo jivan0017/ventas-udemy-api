@@ -1,56 +1,73 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/CreateUserDto';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { hash } from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
+import { CreateUserDto } from './dto/create-user.dto';
+import { ReturnUserDto } from './dto/return-user.dto';
 
 @Injectable()
 export class UserService {
-  private users: CreateUserDto[] = [];
 
-  constructor(
-    @InjectRepository(UserEntity)
-    private readonly userRepository: Repository<UserEntity>,
-  ) {}
+    // NOTE: DEPRECATED
+    //   private users: CreateUserDto[] = [];
 
-  async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
-    const salt = 10;
-    const passwordHash = await hash(createUserDto.password, salt);
+    constructor(
+        @InjectRepository(UserEntity)
+        private readonly userRepository: Repository<UserEntity>,
+    ) { }
 
-    console.log('>>> pass', passwordHash);
+    async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
+        const salt = 10;
+        const passwordHash = await hash(createUserDto.password, salt);
 
-    return this.userRepository.save({
-        ...createUserDto,
-        typeUser: 1,
-        password: passwordHash
-    });    
-    // createUserDto.password = passwordHash;
-    // this.users.push(createUserDto);
-    // console.log('cantidad >>> ', this.users.length);
-    // return createUserDto;
-  }
+        console.log('>>> pass', passwordHash);
 
-  async findAll(): Promise<CreateUserDto[]> {
-    
-    try {
-        // return this.users;
-        return this.userRepository.find({});
-    } catch (error) {
-        console.log(">>> error: ", error)
+        return this.userRepository.save({
+            ...createUserDto,
+            typeUser: 1,
+            password: passwordHash
+        });
+        // createUserDto.password = passwordHash;
+        // this.users.push(createUserDto);
+        // console.log('cantidad >>> ', this.users.length);
+        // return createUserDto;
     }
-  }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+    async findAll(): Promise<UserEntity[]> {
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
+        try {
+            // return this.users;
+            return this.userRepository.find({});
+        } catch (error) {
+            console.log(">>> error: ", error)
+        }
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
+    async getUserById(userId: number): Promise<UserEntity> {
+        const user = await this.userRepository.findOne({
+            where: {
+                id: userId
+            }
+        });
+
+        if (!user) {
+            throw new NotFoundException('userId Not Found');
+        }
+
+        return user;
+    }
+
+    findOne(id: number) {
+        return `This action returns a #${id} user`;
+    }
+
+    update(id: number, updateUserDto: UpdateUserDto) {
+        return `This action updates a #${id} user`;
+    }
+
+    remove(id: number) {
+        return `This action removes a #${id} user`;
+    }
 }
