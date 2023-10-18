@@ -35,6 +35,13 @@ export class UserController {
         );
     }
 
+    @Get('/:userId')
+    async getUserById(@Param('userId') userId: number): Promise<ReturnUserDto> {
+        return new ReturnUserDto(
+            await this.userService.getUserByIdUsingRelationship(userId)
+        );
+    }
+
     @Get(':id')
     findOne(@Param('id') id: string) {
         return this.userService.findOne(+id);

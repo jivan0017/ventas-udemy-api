@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { IUser } from "../interfaces/user/user.interface";
+import { AddressEntity } from "src/address/entities/address.entity";
 
 @Entity({ name: 'user' })
 export class UserEntity implements IUser {
@@ -63,4 +64,8 @@ export class UserEntity implements IUser {
         name: 'updated_at'
     })
     updatedAt: Date;
+
+    // NOTE: un usuario tiene una o varias direcciones
+    @OneToMany(() => AddressEntity, addresses => addresses.user)
+    addresses?: AddressEntity[];
 }

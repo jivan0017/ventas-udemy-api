@@ -53,10 +53,27 @@ export class UserService {
         });
 
         if (!user) {
-            throw new NotFoundException('userId Not Found');
+            throw new NotFoundException(`userId ${userId} Not Found`);
         }
 
         return user;
+    }
+
+    async getUserByIdUsingRelationship(userId: number): Promise<UserEntity> {
+        return this.userRepository.findOne({
+            where: {
+                id: userId
+            },
+            relations: {
+                // addresses: true 
+                addresses: {
+                    city: {
+                        state: true,
+                    }
+                }
+             }
+            // relations: ['addresses']
+        });
     }
 
     findOne(id: number) {
