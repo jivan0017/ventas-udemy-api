@@ -15,3 +15,8 @@ npm i --save cross-env
 
 - type orm
 npm i --save typeorm pg @nestjs/typeorm
+
+- Seguridad:
+npm install --save @nestjs/passport passport passport-local
+npm install --save-dev @types/passport-local
+
