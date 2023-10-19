@@ -70,3 +70,9 @@ nest g service cache
 # Instalación de class validator y class transform
 - comandos:
 npm i --save class-validator class-transformer
+
+# AUTH MODULE
+- comando:
+nest g module auth
+nest g service auth
+nest g controller auth
