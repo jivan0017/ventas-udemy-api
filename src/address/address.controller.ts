@@ -2,11 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ValidationPipe, UseP
 import { AddressService } from './address.service';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
+import { UserType } from '../user/enum/user-type.enum';
+import { Roles } from '../decorators/roles.decorator';
 
+// @Roles(UserType.Admin)
 @Controller('address')
 export class AddressController {
     constructor(private readonly addressService: AddressService) { }
 
+    @Roles(UserType.Admin)
     @Post('/:userId')
     @UsePipes(ValidationPipe)
     async create(

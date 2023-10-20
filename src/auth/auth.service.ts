@@ -32,10 +32,7 @@ export class AuthService {
             throw new NotFoundException('Email or password invalid');
         }
 
-        // eslint-disable-next-line prefer-const
-        let payload = new LoginPayloadDto(user);
-
-        console.log(">>> payload ", payload)
+        const payload = new LoginPayloadDto(user);
 
         return {
             accessToken: this.jwtService.sign({
