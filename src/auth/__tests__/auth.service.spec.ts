@@ -8,6 +8,7 @@ import { loginUserMock } from '../__mocks__/login-user.mock';
 import { ReturnUserDto } from '../../user/dto/return-user.dto';
 
 describe('AuthService', () => {
+
     let service: AuthService;
     let userService: UserService;
 
@@ -43,7 +44,7 @@ describe('AuthService', () => {
 
     it('should be return user if password and email is valid', async () => {
         const user = await service.login(loginUserMock);
-        console.log(">>>>>>>>>>>>>>> user ", user);
+
         expect(user).toEqual({
             accessToken: jwtMock,
             user: new ReturnUserDto(userEntityMock),

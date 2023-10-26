@@ -11,12 +11,14 @@ import { createAddressMock } from '../__mocks__/create-address.mock';
 import { addressMock } from '../__mocks__/address.mock';
 
 describe('AddressService', () => {
+
     let service: AddressService;
     let userService: UserService;
     let cityService: CityService;
     let addressRepository: Repository<AddressEntity>;
 
     beforeEach(async () => {
+
         const module: TestingModule = await Test.createTestingModule({
             providers: [
                 AddressService,
@@ -31,7 +33,16 @@ describe('AddressService', () => {
                     useValue: {
                         getCityById: jest.fn().mockResolvedValue(cityMock),
                     },
-                },                
+                },
+                {
+                    provide: getRepositoryToken(AddressEntity),
+                    useValue: {
+                        save: jest.fn().mockResolvedValue(addressMock),
+                        find: jest.fn().mockResolvedValue([addressMock]),                        
+                        // getCityById: jest.fn().mockResolvedValue(cityMock),
+                    },
+                },    
+                
             ],
         }).compile();
 
@@ -50,10 +61,10 @@ describe('AddressService', () => {
         expect(addressRepository).toBeDefined();
     });
 
-    it('should be return Address after save', async () => {
+    it('should be Save address', async () => {
         const address = await service.create(
             createAddressMock,
-            userEntityMock.id
+            userEntityMock.id 
         )
 
         expect(address).toEqual(addressMock);
