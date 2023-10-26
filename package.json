@@ -88,6 +88,17 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": [
+        "/src/migration",
+        "/src/app.module.ts",
+        "/src/address/address.module.ts",
+        "/src/auth/auth.module.ts",
+        "/src/cache/cache.module.ts",
+        "/src/city/city.module.ts",
+        "/src/state/state.module.ts",
+        "/src/user/user.module.ts",
+        "/src/auth/user.module.ts"
+    ]
   }
 }

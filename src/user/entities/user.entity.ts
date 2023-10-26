@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { IUser } from "../interfaces/user/user.interface";
-import { AddressEntity } from "src/address/entities/address.entity";
+import { AddressEntity } from "../../address/entities/address.entity";
 
 @Entity({ name: 'user' })
 export class UserEntity implements IUser {

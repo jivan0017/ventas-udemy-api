@@ -1,5 +1,5 @@
-import { CityEntity } from "src/city/entities/city.entity";
-import { UserEntity } from "src/user/entities/user.entity";
+import { CityEntity } from "../../city/entities/city.entity";
+import { UserEntity } from "../../user/entities/user.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: 'address' })
@@ -49,7 +49,7 @@ export class AddressEntity {
         name: 'user_id',
         referencedColumnName: 'id'
     })
-    user: UserEntity;
+    user?: UserEntity;
 
     // INFO: muchas direcciones pertenencen a una ciudad
     @ManyToOne(() => CityEntity, city => city.addresses)
