@@ -19,6 +19,9 @@ export class StateEntity {
     updatedAt: Date;
 
     // NOTE: un estado se compone de una o varias ciudades
-    @OneToMany(() => CityEntity, city => city.state)
+    @OneToMany(
+        () => CityEntity,
+        city => city.state
+    )
     cities?: CityEntity[];
 }

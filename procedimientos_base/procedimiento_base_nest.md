@@ -76,3 +76,13 @@ npm i --save class-validator class-transformer
 nest g module auth
 nest g service auth
 nest g controller auth
+
+# VENTAS -----------------------------------------
+
+# CATEGORY MODULE
+nest g module category
+nest g service category
+nest g controller category
+
+# PRODUCT MODULE
+nest g module product

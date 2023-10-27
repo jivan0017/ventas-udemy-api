@@ -43,6 +43,10 @@ npx typeorm migration:create ./src/migration/create_table_state
 npx typeorm migration:create ./src/migration/create_table_city
 npx typeorm migration:create ./src/migration/create_table_address
 
+## ventas
+npx typeorm migration:create ./src/migration/create_table_category
+npx typeorm migration:create ./src/migration/create_table_product
+
 - Alter tables:
 npx typeorm migration:create ./src/migration/alter-table-state
 npx typeorm migration:create ./src/migration/insert-in-state

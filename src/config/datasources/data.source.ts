@@ -26,7 +26,7 @@ export const DataSourceConfig: DataSourceOptions = {
     //migrations: [`src/migration/**/*{.ts,.js}`], //<-- ok para migraciones manuales
     migrations: [`dist/migration/**/*{.ts,.js}`], //<-- ok para migraciones manuales
     // migrations: [`${__dirname}/migration/{.ts,*.js}`],
-    migrationsRun: true,
+    migrationsRun: EnviromentConfig.MIGRATIONS_RUN_FALSE,
     synchronize: EnviromentConfig.SINCRONIZED_DATABASE_FALSE,
 } 
 
