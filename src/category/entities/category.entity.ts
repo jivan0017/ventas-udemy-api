@@ -1,7 +1,12 @@
-import { ProductEntity } from "src/product/entities/product.entity";
-import { AddressEntity } from "../../address/entities/address.entity";
-import { StateEntity } from "../../state/entities/state.entity";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { ProductEntity } from "../../product/entities/product.entity";
+import { 
+    Column, 
+    CreateDateColumn, 
+    Entity, 
+    OneToMany, 
+    PrimaryGeneratedColumn, 
+    UpdateDateColumn 
+} from "typeorm";
 
 @Entity({ name: 'category' })
 export class CategoryEntity {
@@ -30,5 +35,5 @@ export class CategoryEntity {
         () => ProductEntity,
         (product: ProductEntity) => product.category
     )
-    products: ProductEntity[];
+    products?: ProductEntity[];
 }

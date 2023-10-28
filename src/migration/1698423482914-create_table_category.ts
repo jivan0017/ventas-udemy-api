@@ -7,6 +7,7 @@ export class CreateTableCategory1698423482914 implements MigrationInterface {
                 CREATE TABLE public.category (
                     id integer NOT NULL,
                     name character varying NOT NULL,
+                    status boolean DEFAULT true,
                     created_at timestamp without time zone DEFAULT now() NOT NULL,
                     updated_at timestamp without time zone DEFAULT now() NOT NULL,
                     primary key (id)
