@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { UserEntity } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ReturnUserDto } from './dto/return-user.dto';
+import { UserType } from './enum/user-type.enum';
 
 @Injectable()
 export class UserService {
@@ -30,11 +31,9 @@ export class UserService {
         const salt = 10;
         const passwordHash = await hash(createUserDto.password, salt);
 
-        console.log('>>> pass', passwordHash);
-
         return this.userRepository.save({
             ...createUserDto,
-            typeUser: 1,
+            typeUser: UserType.User,
             password: passwordHash
         });
         // createUserDto.password = passwordHash;
