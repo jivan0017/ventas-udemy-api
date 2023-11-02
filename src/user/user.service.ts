@@ -36,6 +36,7 @@ export class UserService {
             typeUser: UserType.User,
             password: passwordHash
         });
+
         // createUserDto.password = passwordHash;
         // this.users.push(createUserDto);
         // console.log('cantidad >>> ', this.users.length);

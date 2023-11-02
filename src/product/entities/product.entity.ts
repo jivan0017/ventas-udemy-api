@@ -39,11 +39,12 @@ export class ProductEntity {
     })
     image: string;
 
-    @Column({
-        default: true,
-        name: 'status'
-    })
-    status: boolean;    
+    // TODO: replantear un estado completo para el producto
+    // @Column({
+    //     default: true,
+    //     name: 'status'
+    // })
+    // status: boolean;
     
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;

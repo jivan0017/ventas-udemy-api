@@ -53,5 +53,8 @@ npx typeorm migration:create ./src/migration/insert-in-state
 npx typeorm migration:create ./src/migration/insert-in-city
 npx typeorm migration:create ./src/migration/alter-table-city
 
+- inser user root
+npx typeorm migration:create ./src/migration/insert-root-in-user
+
 - Agregar columna
 npx typeorm migration:create ./src/migration/alter-table-user

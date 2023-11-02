@@ -86,3 +86,5 @@ nest g controller category
 
 # PRODUCT MODULE
 nest g module product
+nest g service product
+nest g controller product
